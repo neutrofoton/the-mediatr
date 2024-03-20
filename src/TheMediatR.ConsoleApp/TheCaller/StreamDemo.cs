@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using System.Runtime.CompilerServices;
+using MediatR;
 using Microsoft.Extensions.Logging;
 using TheMediatR.ConsoleApp.Streams;
 
@@ -15,7 +16,7 @@ public class StreamDemo: Demo
         
         logger.LogTrace($"------------------------------");
 
-        CancellationToken cancellationToken = new CancellationToken();
+        CancellationToken cancellationToken = new CancellationToken(false);
 
         await Task.Run(async () =>
         {
