@@ -2,8 +2,9 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using TheMediatR.ConsoleApp.Basic.ReqNoRes;
+using TheMediatR.ConsoleApp.Basic.ReqRes;
 
-namespace TheMediatR.ConsoleApp.Basic.ReqRes;
+namespace TheMediatR.ConsoleApp.TheCaller;
 
 public class BasicDemo : Demo
 {
