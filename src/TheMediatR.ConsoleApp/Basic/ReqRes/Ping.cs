@@ -3,8 +3,7 @@
 namespace TheMediatR.ConsoleApp.Basic.ReqRes;
 
 public class PingRequest : IRequest<PingResponse> 
-{   
-    
+{  
 }
 
 public class PingResponse

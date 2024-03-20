@@ -13,14 +13,14 @@ IServiceProvider serviceProvider = new ServiceCollection()
     {
         options.ClearProviders();
         options.AddConsole();
-        options.SetMinimumLevel(LogLevel.Debug);
+        options.SetMinimumLevel(LogLevel.Trace);
     })
     .AddMediatR(cfg => {
         cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
     })
-    .AddTransient<DemoReqRes>()
+    .AddTransient<BasicDemo>()
     .BuildServiceProvider();
 
 Console.WriteLine();
 
-serviceProvider.GetRequiredService<DemoReqRes>().Show();
+serviceProvider.GetRequiredService<BasicDemo>().Show();
