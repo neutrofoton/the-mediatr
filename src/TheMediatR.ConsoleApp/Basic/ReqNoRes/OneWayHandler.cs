@@ -14,7 +14,7 @@ public class OneWayHandler : IRequestHandler<OneWayRequest>
     public Task Handle(OneWayRequest request, CancellationToken cancellationToken)
     {
         // do work
-        logger.LogDebug($"Do task on {this.GetType().Name}");
+        logger.LogDebug($"[ONE WAY] Do task on {this.GetType().Name}");
         return Task.CompletedTask;
     }
 }

@@ -14,7 +14,7 @@ public class PingHandler : IRequestHandler<PingRequest, PingResponse>
 
     public Task<PingResponse> Handle(PingRequest request, CancellationToken cancellationToken)
     {
-        logger.LogDebug($"Do task on {this.GetType().Name}");
+        logger.LogDebug($"[REQ-RES] Do task on {this.GetType().Name}");
         
         return Task.FromResult(new PingResponse()
         {

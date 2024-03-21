@@ -1,10 +1,12 @@
 ﻿
 using System.Reflection;
+using MediatR;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using TheMediatR.ConsoleApp;
 using TheMediatR.ConsoleApp.Basic.ReqRes;
+using TheMediatR.ConsoleApp.Pipelines.Behaviors;
 using TheMediatR.ConsoleApp.TheCaller;
 
 IConfiguration configuration = new ConfigurationBuilder()
@@ -19,6 +21,8 @@ IServiceProvider serviceProvider = new ServiceCollection()
     })
     .AddMediatR(cfg => {
         cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
+        cfg.AddOpenBehavior(typeof(LoggingBehavior<,>));
+        
     })
     .AddTransient<BasicDemo>()
     .AddTransient<NotificationDemo>()
