@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using TheMediatR.ConsoleApp;
 using TheMediatR.ConsoleApp.Basic.ReqRes;
+using TheMediatR.ConsoleApp.Exceptions;
 using TheMediatR.ConsoleApp.Pipelines.Behaviors;
 using TheMediatR.ConsoleApp.TheCaller;
 
@@ -30,9 +31,11 @@ IServiceProvider serviceProvider = new ServiceCollection()
         cfg.AddOpenRequestPostProcessor(typeof(GenericRequestPostProcessor<,>));
 
         cfg.AddOpenBehavior(typeof(LoggingBehavior<,>));
-        cfg.AddOpenStreamBehavior(typeof(GenericStreamPipelineBehavior<,>));        
+        cfg.AddOpenStreamBehavior(typeof(GenericStreamPipelineBehavior<,>)); 
+           
         
     })
+    //.AddTransient(typeof(GlobalRequestExceptionHandler<,,>))
     .AddTransient<BasicOneWayDemo>()
     .AddTransient<BasicReqResDemo>()
     .AddTransient<NotificationDemo>()

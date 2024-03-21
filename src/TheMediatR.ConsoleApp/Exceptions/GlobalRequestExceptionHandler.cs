@@ -19,7 +19,7 @@ public class GlobalRequestExceptionHandler<TRequest, TResponse, TException> : IR
     {
         logger.LogError(exception, $"GenericRequestExceptionHandler translating exception to error {request.GetType().Name}");
        
-        await Task.Delay(1000);
+        await Task.Delay(500);
 
         var translatedResponse = new TResponse
         {

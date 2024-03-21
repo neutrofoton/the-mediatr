@@ -6,9 +6,8 @@ public class PingErrorRequest : IRequest<PingErrorResponse>
 {  
 }
 
-public class PingErrorResponse
+public class PingErrorResponse : GenericResponse
 {
-    public string? Message {get;set;}
 }
 
 public class PingExceptionHandler : IRequestHandler<PingErrorRequest, PingErrorResponse>
