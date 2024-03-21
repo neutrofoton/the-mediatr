@@ -32,11 +32,11 @@ IServiceProvider serviceProvider = new ServiceCollection()
         cfg.AddOpenBehavior(typeof(LoggingBehavior<,>));
         cfg.AddOpenStreamBehavior(typeof(GenericStreamPipelineBehavior<,>));        
         
-        
     })
     .AddTransient<BasicOneWayDemo>()
     .AddTransient<BasicReqResDemo>()
     .AddTransient<NotificationDemo>()
+    .AddTransient<ExceptionDemo>()
     .AddTransient<StreamDemo>()
     .BuildServiceProvider();
 
@@ -49,6 +49,9 @@ await serviceProvider.GetRequiredService<BasicReqResDemo>().Show();
 Console.WriteLine(Environment.NewLine+Environment.NewLine);
 
 await serviceProvider.GetRequiredService<NotificationDemo>().Show();
+Console.WriteLine(Environment.NewLine+Environment.NewLine);
+
+await serviceProvider.GetRequiredService<ExceptionDemo>().Show();
 Console.WriteLine(Environment.NewLine+Environment.NewLine);
 
 await serviceProvider.GetRequiredService<StreamDemo>().Show();
