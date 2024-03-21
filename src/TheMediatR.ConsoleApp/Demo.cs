@@ -13,5 +13,5 @@ public abstract class Demo
         this.mediator = mediator;
     }
 
-    public abstract void Show();
+    public abstract Task Show();
 }

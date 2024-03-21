@@ -9,13 +9,10 @@ public class NotificationDemo : Demo
     {
     }
 
-    public override async void Show()
+    public override async Task Show()
     {
-        logger.LogTrace($"------------------------------");
-
         await mediator.Publish(new Announcement(){
             Message = "Hello Announcement "
         });
-        
     }
 }

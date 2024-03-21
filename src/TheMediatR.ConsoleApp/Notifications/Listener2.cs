@@ -17,7 +17,11 @@ public class Listener2 : INotificationHandler<Announcement>
     {
         logger.LogInformation($"Announcement received by {nameof(Listener2)} is {notification.Message}");
         
+        await Task.Delay(1000,cancellationToken);
+
         //republish
+        logger.LogInformation($"Then Listener2 re-announce");
+
         await mediator.Publish<AnnouncementExt>(new (){
                 Message = notification.Message + "--Ext"
             },cancellationToken);

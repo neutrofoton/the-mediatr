@@ -11,11 +11,8 @@ public class StreamDemo: Demo
     {
     }
 
-    public override async void Show()
+    public override async Task Show()
     {
-        
-        logger.LogTrace($"------------------------------");
-
 
         await Task.Run(async () =>
         {
@@ -42,6 +39,8 @@ public class StreamDemo: Demo
 
             Console.WriteLine($"Stream Request finished.");
         });
+
+        
     }
 }
 
