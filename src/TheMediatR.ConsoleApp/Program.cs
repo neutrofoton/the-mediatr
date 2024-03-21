@@ -21,11 +21,13 @@ IServiceProvider serviceProvider = new ServiceCollection()
         cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
     })
     .AddTransient<BasicDemo>()
+    .AddTransient<NotificationDemo>()
     .AddTransient<StreamDemo>()
     .BuildServiceProvider();
 
 Console.WriteLine();
 
 serviceProvider.GetRequiredService<BasicDemo>().Show();
+serviceProvider.GetRequiredService<NotificationDemo>().Show();
 serviceProvider.GetRequiredService<StreamDemo>().Show();
 await Task.Delay(10000);
