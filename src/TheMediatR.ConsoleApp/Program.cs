@@ -28,8 +28,9 @@ IServiceProvider serviceProvider = new ServiceCollection()
         //cfg.AddRequestPreProcessor(typeof(GenericRequestPreProcessor<>));
         cfg.AddOpenRequestPreProcessor(typeof(GenericRequestPreProcessor<>));
         cfg.AddOpenRequestPostProcessor(typeof(GenericRequestPostProcessor<,>));
+
         cfg.AddOpenBehavior(typeof(LoggingBehavior<,>));
-        
+        cfg.AddOpenStreamBehavior(typeof(GenericStreamPipelineBehavior<,>));        
         
         
     })
