@@ -5,5 +5,5 @@
 - <code>IPipelineBehavior&lt;TRequest, TResponse&gt;</code> can't be used with <code> INotificationHandler&lt;TRequest&gt; </code>
 
 # Reference
-https://github.com/jbogard/MediatR
-https://github.com/jbogard/MediatR/wiki/Behaviors
+- https://github.com/jbogard/MediatR
+- https://github.com/jbogard/MediatR/wiki/Behaviors
