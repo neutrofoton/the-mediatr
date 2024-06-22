@@ -21,7 +21,8 @@ IServiceProvider serviceProvider = new ServiceCollection()
         options.SetMinimumLevel(LogLevel.Trace);
     })
     .AddMediatR(cfg => {
-        cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
+        cfg.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly());
+        //cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
 
         //Just register the behaviors in the order you would like them to be called. 
         //For void handlers, the type of TResponse will be Unit.
