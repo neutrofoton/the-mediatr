@@ -1,4 +1,5 @@
-﻿using MediatR.Pipeline;
+﻿using System.ComponentModel.DataAnnotations;
+using MediatR.Pipeline;
 using Microsoft.Extensions.Logging;
 
 
@@ -18,6 +19,16 @@ public class GlobalRequestExceptionHandler<TRequest, TResponse, TException> : IR
         CancellationToken cancellationToken)
     {
         logger.LogError(exception, $"GenericRequestExceptionHandler translating exception to error {request.GetType().Name}");
+
+        //if validator exception, do extract
+        if(exception is ValidationException)
+        {
+            var valException = exception as ValidationException;
+            foreach(var kvp in valException.Data)
+            {
+                logger.LogWarning($"{kvp.ToString()}");
+            }
+        }
        
         await Task.Delay(500);
 

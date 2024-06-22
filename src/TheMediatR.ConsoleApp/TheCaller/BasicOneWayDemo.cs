@@ -8,14 +8,18 @@ namespace TheMediatR.ConsoleApp.TheCaller;
 
 public class BasicOneWayDemo : Demo
 {
-    public BasicOneWayDemo(ILogger<BasicReqResDemo> logger, IMediator mediator): base(logger,mediator)
+    public BasicOneWayDemo(ILogger<BasicOneWayDemo> logger, IMediator mediator): base(logger,mediator)
     {
     }
 
     public override async Task Show()
     {
+        logger.LogInformation($"[Caller] OneWayRequest Start -> No Return");
+
         await mediator.Send(new OneWayRequest(){});
-        logger.LogInformation($"[Caller] OneWayRequest -> No Return");
+        
+        logger.LogInformation($"[Caller] OneWayRequest Finish -> No Return");
+        
     }
 }
 

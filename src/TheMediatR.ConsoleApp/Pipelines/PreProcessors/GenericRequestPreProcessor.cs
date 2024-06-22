@@ -14,7 +14,7 @@ public class GenericRequestPreProcessor<TRequest> : IRequestPreProcessor<TReques
 
     public Task Process(TRequest request, CancellationToken cancellationToken)
     {
-        logger.LogTrace($"[PRE-Processor] => of {nameof(request)}");
+        logger.LogTrace($"[PRE-Processor] => of {(request)}");
         
         return Task.CompletedTask;
     }

@@ -1,5 +1,6 @@
 ﻿
 using System.Reflection;
+using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -14,6 +15,7 @@ IConfiguration configuration = new ConfigurationBuilder()
                 .Build();
 
 IServiceProvider serviceProvider = new ServiceCollection()
+    .AddValidatorsFromAssemblies(new []{ Assembly.GetExecutingAssembly()})
     .AddLogging(options =>
     {
         options.ClearProviders();
@@ -32,6 +34,7 @@ IServiceProvider serviceProvider = new ServiceCollection()
         cfg.AddOpenRequestPostProcessor(typeof(GenericRequestPostProcessor<,>));
 
         cfg.AddOpenBehavior(typeof(LoggingBehavior<,>));
+        cfg.AddOpenBehavior(typeof(ValidationBehavior<,>));
         cfg.AddOpenStreamBehavior(typeof(GenericStreamPipelineBehavior<,>)); 
            
         
@@ -42,6 +45,7 @@ IServiceProvider serviceProvider = new ServiceCollection()
     .AddTransient<NotificationDemo>()
     .AddTransient<ExceptionDemo>()
     .AddTransient<StreamDemo>()
+    .AddTransient<ValidatorDemo>()
     .BuildServiceProvider();
 
 Console.WriteLine();
@@ -56,6 +60,9 @@ await serviceProvider.GetRequiredService<NotificationDemo>().Show();
 Console.WriteLine(Environment.NewLine+Environment.NewLine);
 
 await serviceProvider.GetRequiredService<ExceptionDemo>().Show();
+Console.WriteLine(Environment.NewLine+Environment.NewLine);
+
+await serviceProvider.GetRequiredService<ValidatorDemo>().Show();
 Console.WriteLine(Environment.NewLine+Environment.NewLine);
 
 await serviceProvider.GetRequiredService<StreamDemo>().Show();

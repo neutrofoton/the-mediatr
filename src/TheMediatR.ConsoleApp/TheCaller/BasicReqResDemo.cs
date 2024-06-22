@@ -14,11 +14,13 @@ public class BasicReqResDemo : Demo
 
     public override async Task Show()
     {
+        logger.LogInformation($"[Caller] ReqRes START");
+
         PingResponse response = await mediator.Send(new PingRequest() { });
 
         await Task.Delay(500);
         
-        logger.LogInformation($"[Caller] ReqRes -> {response.Message}");
+        logger.LogInformation($"[Caller] ReqRes FINISH -> {response.Message}");
 
     }
 }

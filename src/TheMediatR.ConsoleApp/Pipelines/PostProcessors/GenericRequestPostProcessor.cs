@@ -13,7 +13,7 @@ public class GenericRequestPostProcessor<TRequest, TResponse> : IRequestPostProc
     }
     public Task Process(TRequest request, TResponse response, CancellationToken cancellationToken)
     {
-        logger.LogTrace($"[POST-Processor] => of Request = {nameof(request)} , Response = {nameof(response)}");
+        logger.LogTrace($"[POST-Processor] => of Request = {(request)} , Response = {(response)}");
         
         return Task.CompletedTask;
     }
